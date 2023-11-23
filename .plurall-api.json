@@ -1,0 +1,24 @@
+{
+  "type": "worker",
+  "name": "worker",
+  "updated": "2023-11-10T13:23:55.136Z",
+  "created": "2023-11-10T12:57:16.429Z",
+  "engines": {
+    "worker": "3.1.0"
+  },
+  "protos": [],
+  "services": [
+    {
+      "name": "pokerunner",
+      "type": "runner",
+      "category": "consumer",
+      "models": []
+    },
+    {
+      "name": "pokeconnection",
+      "type": "message-provider",
+      "category": "kafka",
+      "models": []
+    }
+  ]
+}

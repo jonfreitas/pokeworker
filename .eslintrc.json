@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@sdk12/eslint-config"
+  ]
+}

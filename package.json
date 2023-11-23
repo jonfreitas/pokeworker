@@ -1,0 +1,60 @@
+{
+  "name": "worker",
+  "version": "0.1.0",
+  "description": "",
+  "homepage": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "proprietary",
+  "private": true,
+  "scripts": {
+    "build": "yarn build:compile && yarn build:copy",
+    "build:compile": "yarn && tsc",
+    "build:copy": "copyfiles -u 1 src/**/*.{gql,graphql,proto} dist/",
+    "build:production": "yarn build && yarn install --production && yarn autoclean --force",
+    "build:staging": "yarn build",
+    "install:prod": "yarn install --production",
+    "start:dev": "nodemon",
+    "start:brokers": "docker-compose up -d",
+    "stop:brokers": "docker-compose down",
+    "start:pack": "yarn build && yarn install:prod && node dist/index.js",
+    "test": "mocha",
+    "lint": "eslint src --ext js,ts"
+  },
+  "engines": {
+    "node": ">=12.15.0"
+  },
+  "dependencies": {
+    "@sdk12/dataserver": "^2.1.0",
+    "@sdk12/protos": "^0.11.1",
+    "@sdk12/worker": "^4.1.1",
+    "google-protobuf": "^3.21.2"
+  },
+  "devDependencies": {
+    "@sdk12/eslint-config": "^3.0.1",
+    "@types/amqp": "0.2.8",
+    "@types/amqplib": "0.10.4",
+    "@types/chai": "4.3.3",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/google-protobuf": "^3.15.6",
+    "@types/mocha": "10.0.0",
+    "@types/node": "^18.15.5",
+    "@types/sinon": "^10.0.13",
+    "chai": "4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "copyfiles": "2.4.1",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.26.0",
+    "mocha": "10.1.0",
+    "mocha-junit-reporter": "^2.1.0",
+    "mocha-multi-reporters": "^1.5.1",
+    "nodemon": "2.0.20",
+    "nyc": "^15.1.0",
+    "readline": "1.3.0",
+    "sinon": "^14.0.1",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "tscpaths": "^0.0.9",
+    "typescript": "4.8.4"
+  }
+}

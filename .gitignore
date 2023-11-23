@@ -1,0 +1,7 @@
+# diretorios
+node_modules
+dist
+data
+
+# files
+.env

@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package plurall.store.entities.subscription.v1;
+
+service PokemonService {
+  rpc CreatePokemon(CreatePokemonRequest) returns (CreatePokemonResponse) { }
+  rpc GetPokemon(GetPokemonRequest) returns (GetPokemonResponse) { }
+  rpc UpdatePokemon(UpdatePokemonRequest) returns (UpdatePokemonResponse) { }
+  rpc UpdateLevelPokemon(UpdateLevelPokemonRequest) returns (UpdateLevelPokemonResponse) { }
+  rpc ListPokemon(ListPokemonRequest) returns (ListPokemonResponse) { }
+}
+
+// Pokémon Service Requests
+message CreatePokemonRequest {
+  string basicForm = 1;
+  string ability = 2;
+  int32 middleFormEvolutionLevel = 3;
+  string middleForm = 4;
+  int32 finalFormEvolutionLevel = 5;
+  string finalForm = 6;
+}
+
+message GetPokemonRequest {
+  string id = 1;
+}
+
+message UpdatePokemonRequest {
+  string id = 1;
+  string name = 2;
+  string level = 3;
+  string basicForm = 4;
+  string ability = 5;
+  string abilities = 6;
+  int32 middleFormEvolutionLevel = 7;
+  string middleForm = 8;
+  int32 finalFormEvolutionLevel = 9;
+  string finalForm = 10;
+  bool hasMoreEvolution = 11;
+}
+
+message UpdateLevelPokemonRequest {
+  string id = 1;
+  string level = 2;
+}
+
+message ListPokemonRequest {
+  string abilities = 1;
+  bool hasMoreEvolution = 2;
+}
+
+// Pokémon Service Responses
+message CreatePokemonResponse {
+  string id = 1;
+}
+
+message GetPokemonResponse {
+  string id = 1;
+  string name = 2;
+  int32 level = 3;
+  string basicForm = 4;
+  string ability = 5;
+  int32 middleFormEvolutionLevel = 6;
+  string middleForm = 7;
+  int32 finalFormEvolutionLevel = 8;
+  string finalForm = 9;
+  bool hasMoreEvolution = 10;
+}
+
+message UpdatePokemonResponse {
+  IsSuccessful updated = 1;
+}
+
+message UpdateLevelPokemonResponse {
+  IsSuccessful updated = 1;
+}
+
+message ListPokemonResponse {
+  repeated Pokemon pokemons = 1;
+}
+
+enum IsSuccessful {
+  true = 0;
+}
+
+enum Sort {
+  ASC = 0;
+  DESC = 1;
+}
+
+message Pokemon {
+  string id = 1;
+  string name = 2;
+  int32 level = 3;
+  string basicForm = 4;
+  string ability = 5;
+  repeated string abilities = 6;
+  int32 middleFormEvolutionLevel = 7;
+  string middleForm = 8;
+  int32 finalFormEvolutionLevel = 9;
+  string finalForm = 10;
+  bool hasMoreEvolution = 11;
+}
+
