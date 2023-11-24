@@ -10,8 +10,8 @@ type GrpcException = {
 }
 type Client = ReturnType<Engine['setClient']>
 
-// const { POKEMON_LEVEL_UPDATE_SERVER_IP } = process.env
-const POKEMON_LEVEL_UPDATE_SERVER_IP = '0.0.0.0:50051'
+const { POKEMON_LEVEL_UPDATE_SERVER_IP } = process.env
+// const POKEMON_LEVEL_UPDATE_SERVER_IP = '0.0.0.0:50051'
 
 const protoDirPath = path.join('./', 'node_modules', '@sdk12', 'protos')
 const protoPath = path.join(
