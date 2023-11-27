@@ -1,5 +1,5 @@
-import { PokemonLevelUpdateService } from '../../core/services/pokemon-level-update'
-import { PokemonLevelUpdateRepository } from '../../data-providers/repositories/pokemon-level-update'
+import { PokemonLevelUpdateService } from '@/core/services/pokemon-level-update'
+import { PokemonLevelUpdateRepository } from '@/data-providers/repositories/pokemon-level-update'
 
 export class PokemonLevelUpdateSingleton {
   private static instance: PokemonLevelUpdateService

@@ -5,10 +5,10 @@ import {
   RunnerTypes,
   Subscription,
 } from '@sdk12/worker'
-import { IPokemonLevelUpdate } from '../../../dtos/pokemon-level-update'
-import { ProcessPokemonLevelUpdateService } from '../../../core/services/processPokemonLevelUpdateService'
-import { PokemonIdNotFoundException } from '../../../core/errors/pokemon-id-not-found-exception'
-import { InvalidMessageFormatException } from '../../../core/errors/invalid-message-format-exception'
+import { IPokemonLevelUpdate } from '@/dtos/pokemon-level-update'
+import { ProcessPokemonLevelUpdateService } from '@/core/services/processPokemonLevelUpdateService'
+import { PokemonIdNotFoundException } from '@/core/errors/pokemon-id-not-found-exception'
+import { InvalidMessageFormatException } from '@/core/errors/invalid-message-format-exception'
 
 export class PokemonConsumer implements Runner {
   type: RunnerTypes = RunnerTypes.CONSUMER

@@ -1,4 +1,4 @@
-# Plurall Worker
+# Pokéworker (Worker)
 
 < DESCRIÇÃO SUCINTA DA RESPONSABILIDADE DESTE WORKER >
 
@@ -56,7 +56,7 @@ Crie uma cópia do arquivo modelo `.env.development` para `.env`.
 Obs: após criar o `.env` altere as variáveis de ambiente que necessitar.
 
 ```bash
-cp .env.development .env
+cp .env
 ```
 
 Inicialize as instâncias dos brokers
@@ -69,9 +69,4 @@ Em outra aba do terminal, execute o projeto
 yarn start:dev
 ```
 
-Após isto, você pode utilizar o Conduktor para realizar as requisições para o Kafka, acessar o administrador do RabbitMQ pela URL http://localhost:15672/ ou utilizar o administrador do ActiveMQ pela URL http://localhost:8161/
-
-Para enviar mensagens para as filas do ElasticMQ, é possível utilizar o `aws-cli`:
-```
-aws --endpoint-url http://localhost:9324 sqs send-message --queue-url http://localhost:9324/plurall --message-body "Bota na fila Plurall!!!"
-```
+Após isto, você pode utilizar o Condutor para realizar as requisições para o Kafka, acessar o administrador do RabbitMQ pela URL http://localhost:15672/

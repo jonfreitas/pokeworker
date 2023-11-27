@@ -1,6 +1,6 @@
 import path from 'path'
 import { Engine, logger } from '@sdk12/dataserver'
-import { IPokemonLevelUpdateRepository } from '../../core/repositories/pokemon-level-update'
+import { IPokemonLevelUpdateRepository } from '@/core/repositories/pokemon-level-update'
 import { PokemonLevelUpdate } from '../dtos/pokemon-level-update'
 
 type GrpcException = {
@@ -10,13 +10,11 @@ type GrpcException = {
 }
 type Client = ReturnType<Engine['setClient']>
 
-// const { POKEMON_LEVEL_UPDATE_SERVER_IP } = process.env
-const POKEMON_LEVEL_UPDATE_SERVER_IP = '0.0.0.0:50051'
+const { POKEMON_LEVEL_UPDATE_SERVER_IP } = process.env
 
-const protoDirPath = path.join('./', 'node_modules', '@sdk12', 'protos')
+const protoDirPath = path.join('./', 'src', 'protos')
 const protoPath = path.join(
   protoDirPath,
-  'pokemon',
   'pokemon.proto'
 )
 const engineDataServer = new Engine({

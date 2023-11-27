@@ -1,5 +1,5 @@
-import { PokemonLevelUpdateSingleton } from '../../application/singleton/pokemon-level-update'
-import { IPokemonLevelUpdate } from '../../dtos/pokemon-level-update'
+import { PokemonLevelUpdateSingleton } from '@/application/singleton/pokemon-level-update'
+import { IPokemonLevelUpdate } from '@/dtos/pokemon-level-update'
 import { PokemonIdNotFoundException } from '../errors/pokemon-id-not-found-exception'
 
 const pokemonLevelUpdateService = PokemonLevelUpdateSingleton.getInstance()

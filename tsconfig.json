@@ -7,14 +7,17 @@
     "declaration": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "files": [
     "./node_modules/@types/mocha/index.d.ts"
   ],
   "include": [
     "src/**/*.ts"
-  ],
+, "dotenv.ts"  ],
   "exclude": [
     "node_modules"
   ]
