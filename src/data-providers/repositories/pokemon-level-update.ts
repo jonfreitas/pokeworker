@@ -10,8 +10,8 @@ type GrpcException = {
 }
 type Client = ReturnType<Engine['setClient']>
 
-const { POKEMON_LEVEL_UPDATE_SERVER_IP } = process.env
-// const POKEMON_LEVEL_UPDATE_SERVER_IP = '0.0.0.0:50051'
+// const { POKEMON_LEVEL_UPDATE_SERVER_IP } = process.env
+const POKEMON_LEVEL_UPDATE_SERVER_IP = '0.0.0.0:50051'
 
 const protoDirPath = path.join('./', 'node_modules', '@sdk12', 'protos')
 const protoPath = path.join(
@@ -24,8 +24,6 @@ const engineDataServer = new Engine({
 })
 
 export class PokemonLevelUpdateRepository implements IPokemonLevelUpdateRepository {
-  proto: string = path.join(__dirname, '..', '..', 'protos', 'pokemon.proto')
-
   private readonly client: Client
 
   constructor() {
@@ -35,7 +33,7 @@ export class PokemonLevelUpdateRepository implements IPokemonLevelUpdateReposito
   update(dto: PokemonLevelUpdate): Promise<void> {
     return new Promise((resolve, reject) => {
       try {
-        this.client.PokemonLevelUpdate(
+        this.client.updateLevelPokemon(
           dto,
           (error: GrpcException, response: void) => {
             if (error) {

@@ -10,14 +10,6 @@ import { ProcessPokemonLevelUpdateService } from '../../../core/services/process
 import { PokemonIdNotFoundException } from '../../../core/errors/pokemon-id-not-found-exception'
 import { InvalidMessageFormatException } from '../../../core/errors/invalid-message-format-exception'
 
-function getFormattedMessageOrFail(message: Message): IPokemonLevelUpdate {
-  try {
-    return JSON.parse(JSON.parse(message.Body).Message) as IPokemonLevelUpdate
-  } catch (error) {
-    throw new InvalidMessageFormatException('Invalid message format')
-  }
-}
-
 export class PokemonConsumer implements Runner {
   type: RunnerTypes = RunnerTypes.CONSUMER
 
@@ -41,8 +33,10 @@ export class PokemonConsumer implements Runner {
   }
 
   async listener(payload: Buffer, message: Message): Promise<void> {
+    const messageSendPayload = JSON.parse(payload?.toString())
+
     try {
-      const pokemonLevelUpdateByQueue = getFormattedMessageOrFail(message)
+      const pokemonLevelUpdateByQueue = getFormattedMessageOrFail(messageSendPayload)
 
       await new ProcessPokemonLevelUpdateService(pokemonLevelUpdateByQueue).execute()
 
@@ -55,13 +49,7 @@ export class PokemonConsumer implements Runner {
         id: pokemonLevelUpdateByQueue.id,
         level: pokemonLevelUpdateByQueue.level
       })
-
-      return new Promise((resolve) => {
-        logger.info(JSON.stringify(payload.toString()))
-        logger.info(message)
-        resolve()
-      })
-    } catch (err: unknown) {
+    } catch (err) {
       logger.error('POKEMON_LEVEL_UPDATE_WORKER_SAVE_ERROR', {
         err: (err as Error).message,
         payload: JSON.stringify(message),
@@ -74,6 +62,14 @@ export class PokemonConsumer implements Runner {
         throw err
       }
     }
+  }
+}
+
+function getFormattedMessageOrFail(message: Message): IPokemonLevelUpdate {
+  try {
+    return message as IPokemonLevelUpdate
+  } catch (error) {
+    throw new InvalidMessageFormatException('Invalid message format')
   }
 }
 
