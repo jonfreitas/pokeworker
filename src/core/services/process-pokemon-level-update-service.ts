@@ -1,8 +1,8 @@
-import { PokemonLevelUpdateSingleton } from '@/application/singleton/pokemon-level-update'
+import { PokemonLevelUpdateServiceInstance } from '@/application/helpers/pokemon-level-update-service-instance'
 import { IPokemonLevelUpdate } from '@/dtos/pokemon-level-update'
-import { PokemonIdNotFoundException } from '../errors/pokemon-id-not-found-exception'
+import { PropertyNotFoundException } from '../errors/property-not-found-exception'
 
-const pokemonLevelUpdateService = PokemonLevelUpdateSingleton.getInstance()
+const pokemonLevelUpdateService = PokemonLevelUpdateServiceInstance.getInstance()
 
 export class ProcessPokemonLevelUpdateService {
   public id: string
@@ -29,8 +29,8 @@ export class ProcessPokemonLevelUpdateService {
   }
 
   validate() {
-    if (!this.id) {
-      throw new PokemonIdNotFoundException('Pokemon id is required')
+    if (!this.id || !this.level) {
+      throw new PropertyNotFoundException(`Os campos ${this.id} e ${this.level} são obrigatórios!` )
     }
   }
 }

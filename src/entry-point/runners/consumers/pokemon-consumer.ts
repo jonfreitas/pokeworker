@@ -6,8 +6,8 @@ import {
   Subscription,
 } from '@sdk12/worker'
 import { IPokemonLevelUpdate } from '@/dtos/pokemon-level-update'
-import { ProcessPokemonLevelUpdateService } from '@/core/services/processPokemonLevelUpdateService'
-import { PokemonIdNotFoundException } from '@/core/errors/pokemon-id-not-found-exception'
+import { ProcessPokemonLevelUpdateService } from '@/core/services/process-pokemon-level-update-service'
+import { PropertyNotFoundException } from '@/core/errors/property-not-found-exception'
 import { InvalidMessageFormatException } from '@/core/errors/invalid-message-format-exception'
 
 export class PokemonConsumer implements Runner {
@@ -56,7 +56,7 @@ export class PokemonConsumer implements Runner {
       })
 
       if (
-        !(err instanceof PokemonIdNotFoundException) &&
+        !(err instanceof PropertyNotFoundException) &&
         !(err instanceof InvalidMessageFormatException)
       ) {
         throw err
@@ -69,7 +69,7 @@ function getFormattedMessageOrFail(message: Message): IPokemonLevelUpdate {
   try {
     return message as IPokemonLevelUpdate
   } catch (error) {
-    throw new InvalidMessageFormatException('Invalid message format')
+    throw new InvalidMessageFormatException('Formato de mensagem inválido.')
   }
 }
 

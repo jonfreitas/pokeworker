@@ -1,7 +1,7 @@
 import path from 'path'
 import { Engine, logger } from '@sdk12/dataserver'
 import { IPokemonLevelUpdateRepository } from '@/core/repositories/pokemon-level-update'
-import { PokemonLevelUpdate } from '../dtos/pokemon-level-update'
+import { IPokemonLevelUpdate } from '../dtos/pokemon-level-update'
 
 type GrpcException = {
   code: number
@@ -28,7 +28,7 @@ export class PokemonLevelUpdateRepository implements IPokemonLevelUpdateReposito
     this.client = engineDataServer.setClient(POKEMON_LEVEL_UPDATE_SERVER_IP, protoPath)
   }
 
-  update(dto: PokemonLevelUpdate): Promise<void> {
+  update(dto: IPokemonLevelUpdate): Promise<void> {
     return new Promise((resolve, reject) => {
       try {
         this.client.updateLevelPokemon(

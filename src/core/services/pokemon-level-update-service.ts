@@ -1,4 +1,4 @@
-import { PokemonLevelUpdate } from '@/data-providers/dtos/pokemon-level-update'
+import { IPokemonLevelUpdate } from '@/data-providers/dtos/pokemon-level-update'
 import { IPokemonLevelUpdateRepository } from '../repositories/pokemon-level-update'
 
 export class PokemonLevelUpdateService {
@@ -6,7 +6,7 @@ export class PokemonLevelUpdateService {
     private readonly pokemonLevelUpdateRepository: IPokemonLevelUpdateRepository
   ) {}
 
-  async execute(pokemonLevelUpdate: PokemonLevelUpdate) {
+  async execute(pokemonLevelUpdate: IPokemonLevelUpdate) {
     await this.pokemonLevelUpdateRepository.update(pokemonLevelUpdate)
   }
 }

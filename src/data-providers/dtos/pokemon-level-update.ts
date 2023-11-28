@@ -1,4 +1,4 @@
-export interface PokemonLevelUpdate {
+export interface IPokemonLevelUpdate {
   id: string
   level: number
   sentMessage: boolean
