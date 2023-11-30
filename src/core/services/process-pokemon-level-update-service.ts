@@ -1,4 +1,4 @@
-import { PokemonLevelUpdateServiceInstance } from '@/application/helpers/pokemon-level-update-service-instance'
+import { PokemonLevelUpdateServiceInstance } from '../../../src/application/helpers/pokemon-level-update-service-instance'
 import { IPokemonLevelUpdate } from '@/dtos/pokemon-level-update'
 import { PropertyNotFoundException } from '../errors/property-not-found-exception'
 

@@ -6,7 +6,7 @@ import {
   Subscription,
 } from '@sdk12/worker'
 import { IPokemonLevelUpdate } from '@/dtos/pokemon-level-update'
-import { ProcessPokemonLevelUpdateService } from '@/core/services/process-pokemon-level-update-service'
+import { ProcessPokemonLevelUpdateService } from '../../../core/services/process-pokemon-level-update-service'
 import { PropertyNotFoundException } from '@/core/errors/property-not-found-exception'
 import { InvalidMessageFormatException } from '@/core/errors/invalid-message-format-exception'
 

@@ -25,7 +25,8 @@ export class PokemonLevelUpdateRepository implements IPokemonLevelUpdateReposito
   private readonly client: Client
 
   constructor() {
-    this.client = engineDataServer.setClient(POKEMON_LEVEL_UPDATE_SERVER_IP, protoPath)
+    console.log(POKEMON_LEVEL_UPDATE_SERVER_IP)
+    this.client = engineDataServer.setClient('0.0.0.0:50051', protoPath)
   }
 
   update(dto: IPokemonLevelUpdate): Promise<void> {

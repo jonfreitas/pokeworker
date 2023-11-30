@@ -1,5 +1,5 @@
-import { PokemonLevelUpdate } from '@/data-providers/dtos/pokemon-level-update'
+import { IPokemonLevelUpdate } from '@/data-providers/dtos/pokemon-level-update'
 
 export interface IPokemonLevelUpdateRepository {
-  update(dto: PokemonLevelUpdate): Promise<void>
+  update(dto: IPokemonLevelUpdate): Promise<void>
 }

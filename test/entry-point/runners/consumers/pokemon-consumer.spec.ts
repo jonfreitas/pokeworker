@@ -1,13 +1,13 @@
 import {
   PokemonConsumer,
   pokemonConsumer,
-} from '@/entry-point/runners/consumers/pokemon-consumer'
+} from '../../../../src/entry-point/runners/consumers/pokemon-consumer'
 import sinon from 'sinon'
-import mockMessage from 'test/mocks/message.json'
-import { PokemonLevelUpdateServiceInstance } from '@/application/helpers/pokemon-level-update-service-instance'
+import mockMessage from '../../../mocks/message.json'
+import { PokemonLevelUpdateServiceInstance } from '../../../../src/application/helpers/pokemon-level-update-service-instance'
 import chaiAsPromised from 'chai-as-promised'
 import chai from 'chai'
-import { PokemonLevelUpdateService } from '@/core/services/pokemon-level-update-service'
+import { PokemonLevelUpdateService } from '../../../../src/core/services/pokemon-level-update-service'
 
 chai.use(chaiAsPromised)
 

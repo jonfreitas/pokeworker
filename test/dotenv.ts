@@ -1,9 +1,6 @@
-import * as dotenv from 'dotenv'
+import dotenv from 'dotenv'
 import path from 'path'
 
-const pathEnvTest = path.resolve('.env.test')
-export default dotenv.config({ path: pathEnvTest })
+dotenv.config({ path: path.resolve(process.cwd(), '.env.test') })
 
-export function config(arg0: { path: string }) {
-  throw new Error('Function not implemented.')
-}
+module.exports = {}

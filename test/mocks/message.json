@@ -1,4 +1,6 @@
 {
 	"id": "6564ce8f9ce02d2cca8868e7",
-	"level": 50
+	"level": 50,
+  "sentMessage": true,
+  "origin": "pokeworker"
 }
